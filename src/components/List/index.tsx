@@ -1,5 +1,7 @@
 import React from 'react'
 import { Text, View } from 'react-native'
+import { ListItem } from '../ListItem'
+import { NotFoundItem } from '../NotFoundItem'
 import { styles } from './styles'
 
 export const List = () => {
@@ -19,6 +21,8 @@ export const List = () => {
           <Text style={styles.quantityItems}>0</Text>
         </View>
       </View>
+      <NotFoundItem />
+      <ListItem />
     </View>
   )
 }

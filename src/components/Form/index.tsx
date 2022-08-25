@@ -1,6 +1,6 @@
 import React from 'react'
-import { Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { AntDesign } from '@expo/vector-icons/'
+import { TextInput, TouchableOpacity, View } from 'react-native'
+import { AntDesign } from '@expo/vector-icons'
 import { styles } from './styles'
 
 export const Form = () => {
@@ -12,9 +12,7 @@ export const Form = () => {
         placeholderTextColor={'#808080'}
       />
       <TouchableOpacity style={styles.btnAddNewTask}>
-        <Text>
-          <AntDesign name="pluscircleo" size={16} color="#F2F2F2" />
-        </Text>
+        <AntDesign name="pluscircleo" size={16} color="#F2F2F2" />
       </TouchableOpacity>
     </View>
   )
