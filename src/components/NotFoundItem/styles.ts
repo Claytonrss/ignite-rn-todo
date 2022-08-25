@@ -3,9 +3,12 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
   container: {
     paddingVertical: 48,
-    paddingHorizontal: 32,
+    marginHorizontal: 32,
     justifyContent: 'center',
     alignItems: 'center',
+    borderStyle: 'solid',
+    borderTopWidth: 1,
+    borderColor: 'rgba(51, 51, 51, 1.0)',
   },
   icon: {
     width: 56,

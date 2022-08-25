@@ -1,22 +1,42 @@
-import React from 'react'
-import { Text, Touchable, TouchableOpacity, View } from 'react-native'
-import { Entypo } from '@expo/vector-icons'
 import { FontAwesome } from '@expo/vector-icons'
-import { AntDesign } from '@expo/vector-icons'
+import React from 'react'
+import { Text, TouchableOpacity, View } from 'react-native'
+import { ITask } from '../../types/Task'
 import { styles } from './styles'
 
-export const ListItem = () => {
+type Props = {
+  task: ITask
+  removeTask: (id: number) => void
+  finishTask: (id: number) => void
+}
+
+export const ListItem = ({ task, removeTask, finishTask }: Props) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.changeStatusButton}>
-        {/* <FontAwesome name="circle-o" size={18} color="#4EA8DE" /> */}
-        <FontAwesome name="check-circle" size={18} color="#5E60CE" />
+      <TouchableOpacity
+        style={styles.changeStatusButton}
+        onPress={() => finishTask(task.id)}
+      >
+        {task.isDone ? (
+          <FontAwesome name="check-circle" size={18} color="#5E60CE" />
+        ) : (
+          <FontAwesome name="circle-o" size={18} color="#4EA8DE" />
+        )}
       </TouchableOpacity>
 
-      <Text style={[styles.listItemText, styles.listItemTextFinished]}>
-        Integer urna interdum massa libero auctor neque turpis turpis semper.
+      <Text
+        onPress={() => finishTask(task.id)}
+        style={[
+          styles.listItemText,
+          task.isDone && styles.listItemTextFinished,
+        ]}
+      >
+        {task.description}
       </Text>
-      <TouchableOpacity style={styles.changeStatusButton}>
+      <TouchableOpacity
+        style={styles.changeStatusButton}
+        onPress={() => removeTask(task.id)}
+      >
         <FontAwesome name="trash" size={18} color="#808080" />
       </TouchableOpacity>
     </View>

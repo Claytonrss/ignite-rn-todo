@@ -11,9 +11,6 @@ export const styles = StyleSheet.create({
     paddingTop: 32,
     marginHorizontal: 24,
     paddingBottom: 20,
-    borderBStyle: 'solid',
-    borderBottomWidth: 1,
-    borderColor: 'rgba(51, 51, 51, 1.0)',
   },
   headerListTextContainer: {
     flexDirection: 'row',

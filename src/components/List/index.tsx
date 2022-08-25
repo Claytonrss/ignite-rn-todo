@@ -1,10 +1,17 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { FlatList, Text, View } from 'react-native'
+import { ITask } from '../../types/Task'
 import { ListItem } from '../ListItem'
 import { NotFoundItem } from '../NotFoundItem'
 import { styles } from './styles'
 
-export const List = () => {
+type Props = {
+  tasks: ITask[]
+  removeTask: (id: number) => void
+  finishTask: (id: number) => void
+}
+
+export const List = ({ tasks, removeTask, finishTask }: Props) => {
   return (
     <View style={styles.containerList}>
       <View style={styles.headerList}>
@@ -12,17 +19,28 @@ export const List = () => {
           <Text style={[styles.headerListText, styles.createdItems]}>
             Criadas
           </Text>
-          <Text style={styles.quantityItems}>0</Text>
+          <Text style={styles.quantityItems}>{tasks.length}</Text>
         </View>
         <View style={styles.headerListTextContainer}>
           <Text style={[styles.headerListText, styles.finishedItems]}>
             Concluídas
           </Text>
-          <Text style={styles.quantityItems}>0</Text>
+          <Text style={styles.quantityItems}>
+            {tasks.filter(task => task.isDone).length}
+          </Text>
         </View>
       </View>
-      <NotFoundItem />
-      <ListItem />
+      <FlatList
+        data={tasks}
+        renderItem={({ item }) => (
+          <ListItem
+            task={item}
+            removeTask={removeTask}
+            finishTask={finishTask}
+          />
+        )}
+        ListEmptyComponent={<NotFoundItem />}
+      />
     </View>
   )
 }

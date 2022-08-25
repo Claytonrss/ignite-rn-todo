@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'rgba(13, 13, 13, 1.0)',
     paddingHorizontal: 16,
+    color: '#FFFFFF',
   },
   btnAddNewTask: {
     width: 52,
